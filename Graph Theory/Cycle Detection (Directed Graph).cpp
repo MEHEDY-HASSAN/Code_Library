@@ -69,7 +69,7 @@ int main()
         cout<< "Cycle detected";
     }
     else
-    {
+    { 
         cout<< "There is no cycle";
     }
 
