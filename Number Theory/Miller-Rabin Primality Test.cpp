@@ -13,7 +13,6 @@ typedef long long ll;
 
 //mt19937 rd(time(0));
 mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
-
 ll mulmod(ll a,ll b,ll m)
 {
     ll res = 0;
@@ -44,7 +43,6 @@ ll bigmod(ll b,ll p,ll m)
 
 }
 
-
 bool check_composite(ll d,ll n)
 {
     ll a = uniform_int_distribution<ll>(2LL,n-2)(rng);
@@ -61,7 +59,6 @@ bool check_composite(ll d,ll n)
     }
     return 0;
 }
-
 bool MillerTEST(ll n)
 {
     if(n==2 || n==3)return 1;
