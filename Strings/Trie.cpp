@@ -94,6 +94,18 @@ struct Trie{
         }
         return ans;
     }
+    int Minxor(int x) // returns minimum of val ^ x
+    {
+        node* cur = root;
+        int ans = 0;
+        for (int i=B; i>=0; i--)
+        {
+            int k = (x >> i) & 1;
+            if (cur -> nxt[k]) cur = cur -> nxt[k], ans <<= 1;
+            else cur = cur -> nxt[!k], ans <<= 1, ans++;
+        }
+        return ans;
+    }
     void del(node* cur) {
     for (int i = 0; i < 2; i++) if (cur -> nxt[i]) del(cur -> nxt[i]);
     delete(cur);
@@ -129,5 +141,7 @@ int main()
 
 /// Problem : https://cses.fi/problemset/task/1655/ (Max Xor Subarray)
 
-/// Problem : https://codeforces.com/contest/282/problem/E
+/// Problem : https://codeforces.com/contest/282/problem/E (Max prefix_xor ^ suffix_xor)
 /// Solution : https://codeforces.com/contest/282/submission/163605232
+
+// Credit: ShahjalalShohag
