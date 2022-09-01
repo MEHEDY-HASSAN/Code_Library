@@ -61,7 +61,7 @@ void dfs(int u,int F = -1)
     int child = 0;
     for(auto x:v[u])
     {
-        if(F == u) continue;
+        if(F == x) continue;
         if(!vis[x])
         {
             child++;
