@@ -45,13 +45,13 @@ typedef pair<int,int> pii;
 const int N=1e6+9,mod=998244353;
 
 int n,m;
-vector<int>v[N];
+vector<int>v[N],Low(N,-1),dis(N,-1);
 bool vis[N];
 int AP[N];
-int B[N];
-int Low[N]; /// কত উপরে একটা নোডের সাথে connected. (using Back-edge with i or subtree of i)
-int dis[N]; /// discovery time
-int timer = 1;
+/// Low[] কত উপরে একটা নোডের সাথে connected. (using Back-edge with i or subtree of i)
+///dis[] discovery time
+int timer = 0;
+vector< pii > res;
 void dfs(int u,int F = -1)
 {
     vis[u] = 1;
@@ -68,6 +68,8 @@ void dfs(int u,int F = -1)
             dfs(x,u);
             Low[u] = min(Low[x],Low[u]);
             if(F != - 1 && Low[x] >= dis[u]) AP[u] = 1;
+            if(Low[x] > dis[u])
+                res.pb({min(x,u),max(x,u)}); /// If bidirectional graph.else push(u,v).
         }
         else
         {
@@ -99,9 +101,14 @@ int main()
     puts("");
     for(int i=1;i<=n;i++)
     {
-        cout << i << " : " <<
-        AP[i] << '\n';
+        cout << i << " : " << AP[i] << '\n';
     }
+
+    /**
+        Important tips:
+        *  2 edge connected components: no bridge in graph
+        *  if there are bridge SCC is not possible
+    */
 
     return 0;
 }
@@ -132,4 +139,16 @@ int main()
 5 4
 
 6
+
+// 0 indexed
+6 7
+0 5
+0 1
+1 3
+3 4
+4 2
+2 3
+2 1
+
+
 */
