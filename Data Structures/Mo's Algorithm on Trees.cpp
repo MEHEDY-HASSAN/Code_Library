@@ -1,3 +1,4 @@
+//https://codeforces.com/blog/entry/43230
 
 //#pragma GCC optimize("Ofast")
 //#pragma GCC target("avx,avx2,fma")
